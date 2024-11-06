@@ -19,7 +19,7 @@ export async function findAllAddress() {
 
     const userId = profile.id
 
-    let res = await fetch("http://localhost:8080/api/v1/addresses", requestOptions)
+    let res = await fetch("http://localhost:8080/api/addresses", requestOptions)
     if (res.status === 200) {
         let response = await res.text()
 
@@ -52,7 +52,7 @@ export async function findAddress(id) {
     redirect: 'follow'
     };
 
-    let res = await fetch(`http://localhost:8080/api/v1/addresses/${id}`, requestOptions)
+    let res = await fetch(`http://localhost:8080/api/addresses/${id}`, requestOptions)
     if (res.status === 200) {
         let response = await res.text()
 
@@ -99,7 +99,7 @@ export async function createAddress(address) {
     redirect: 'follow'
     };
 
-    let res = await fetch("http://localhost:8080/api/v1/addresses", requestOptions)
+    let res = await fetch("http://localhost:8080/api/addresses", requestOptions)
     if (res.status === 201) {
         return {
             status: true,
@@ -141,7 +141,7 @@ export async function updateAddress(id, address) {
         redirect: 'follow'
     };
 
-    let res = await fetch(`http://localhost:8080/api/addresses/v1/${id}`, requestOptions)
+    let res = await fetch(`http://localhost:8080/api/addresses/${id}`, requestOptions)
     if (res.status === 200) {
         return {
             status: true
@@ -167,7 +167,7 @@ export async function deleteAddress(id) {
     redirect: 'follow'
     };
 
-    let res = await fetch(`http://localhost:8080/api/addresses/v1/${id}`, requestOptions)
+    let res = await fetch(`http://localhost:8080/api/addresses/${id}`, requestOptions)
     if (res.status === 204) {
         return {
             status: true

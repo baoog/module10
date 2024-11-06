@@ -18,7 +18,7 @@ export async function createOrder(order) {
         redirect: 'follow'
     };
 
-    let res = await fetch("http://localhost:8080/api/v1/orders", requestOptions)
+    let res = await fetch("http://localhost:8080/api/orders", requestOptions)
     
     if (res.status === 201) {
         return {

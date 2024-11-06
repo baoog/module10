@@ -16,7 +16,7 @@ export async function signIn(data) {
         redirect: 'follow'
     };
 
-    const response = await fetch("http://localhost:8080/api/auth/v1/signin", requestOptions)
+    const response = await fetch("http://localhost:8080/api/auth/signin", requestOptions)
 
     if (response.status === 401) {
         return { id: '' }
@@ -35,7 +35,7 @@ export async function signIn(data) {
             redirect: 'follow'
         }
 
-        const res = await fetch(`http://localhost:8080/api/v1/users/${user.jti}`, requestOptions)
+        const res = await fetch(`http://localhost:8080/api/users/${user.jti}`, requestOptions)
 
 
         if (res.status === 200) {
@@ -74,7 +74,7 @@ export async function signUp(data, navigate) {
         redirect: 'follow'
     };
 
-    let res = await fetch("http://localhost:8080/api/v1/auth/signup", requestOptions)
+    let res = await fetch("http://localhost:8080/api/auth/signup", requestOptions)
     if(res.status === 401) {
         return {
             status: false
