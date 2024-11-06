@@ -1,0 +1,30 @@
+export async function createOrder(order) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let token = sessionStorage.getItem("token")
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    var raw = JSON.stringify({
+        "quantity": order.quantity,
+        "user": order.user,
+        "product": order.product,
+        "address": order.address
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    let res = await fetch("http://localhost:8080/api/v1/orders", requestOptions)
+    
+    if (res.status === 201) {
+        return {
+            status: true
+        }
+    } else {
+        return { status: false }
+    }
+}
